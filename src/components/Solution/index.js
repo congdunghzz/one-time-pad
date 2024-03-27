@@ -1,5 +1,5 @@
 import {memo} from "react";
-function Solution({plaintext}){
+function Solution({plaintext, inputKey}){
 
     // Hàm chuyển đổi chuỗi thành mảng các mã ASCII
     function stringToAsciiArray(str) {
@@ -55,8 +55,11 @@ function Solution({plaintext}){
         let plaintext = asciiArrayToString(plaintextAscii);
         return plaintext;
     }
-
-    let key = generateKey(plaintext);
+    let key = inputKey;
+    if (inputKey.length < plaintext.length) {
+       
+        key = generateKey(plaintext);
+    }
     let asciiCiphertext = encrypt(plaintext, key);
     let decryptedPlaintext = decrypt(asciiCiphertext, key);
     return (
