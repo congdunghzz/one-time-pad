@@ -56,9 +56,9 @@ function Solution({plaintext, inputKey}){
         return plaintext;
     }
     let key = inputKey;
-    if (inputKey.length < plaintext.length) {
+    while (key.length < plaintext.length) {
        
-        key = generateKey(plaintext);
+        key += key;
     }
     let asciiCiphertext = encrypt(plaintext, key);
     let decryptedPlaintext = decrypt(asciiCiphertext, key);
